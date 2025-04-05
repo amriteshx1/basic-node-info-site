@@ -1,0 +1,23 @@
+{
+  "name": "basic-node-info-site",
+  "version": "1.0.0",
+  "description": "A simple Node.js project that serves static HTML pages using core modules.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amriteshx1/basic-node-info-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amriteshx1/basic-node-info-site/issues"
+  },
+  "homepage": "https://github.com/amriteshx1/basic-node-info-site#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

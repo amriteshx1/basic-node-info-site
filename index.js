@@ -1,21 +1,25 @@
-var http = require('http');
-var url = require('url');
-var fs = require('fs');
+const express = require("express");
+const path = require('path');
+const app = express();
+const port = 8080;
 
-http.createServer(function (req, res) {
-    var q = url.parse(req.url, true);
-    var pathname = q.pathname === "/" ? "/index" : q.pathname;
-    var filename = "." + pathname + ".html";
+app.get("/", function (req,res){
+    res.sendFile(path.join(__dirname, './index.html'));
+})
 
-    fs.readFile(filename, function(err,data){
-        if(err){
-            fs.readFile("./404.html", function(err2, data2){
-                res.writeHead(404, {'Content-Type': 'text/html'});
-                return res.end(data2);
-            })
-            return;
-        }
-        res.writeHead(200,  {'Content-Type': 'text/html'});
-        return res.end(data);
-    })
-}).listen(8080);
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, './about.html'));
+});
+
+app.get('/contact-me', (req, res) => {
+    res.sendFile(path.join(__dirname, './contact-me.html'));
+});
+
+app.use((req, res) => {
+    res.status(404);
+    res.sendFile(path.join(__dirname, '404.html'));
+});
+
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});
